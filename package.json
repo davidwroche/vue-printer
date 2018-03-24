@@ -1,0 +1,24 @@
+{
+  "name": "vue-printer",
+  "version": "0.0.3",
+  "description": "vuejs print component",
+  "main": "printer.vue",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidwroche/vue-printer.git"
+  },
+  "keywords": [
+    "vue",
+    "js",
+    "component"
+  ],
+  "author": "David Roche",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidwroche/vue-printer/issues"
+  },
+  "homepage": "https://github.com/davidwroche/vue-printer#readme"
+}
