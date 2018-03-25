@@ -27,17 +27,61 @@ install vue-printer
 
 ```html
 
+<template>
+  <div id="app">
+    <random v-if="printer_off"></random>
+ 
+    <printer :printcomponent="$options.components.test"  @printerStatus="printer_off = $event" :printer_off="printer_off"></printer>
+  </div>
+</template>
+
 ```
 
 ```js
+import printer from "vue-printer";
+import test from "vue-test"; // just shows where $options.components.test is from
 
+
+export default {
+  name: "app",
+  components: {
+    printer,
+    test
+  },
+  data() {
+    return {
+      printer_off: true
+    };
+  }
+};
 
 ```
 
 ```css
+<style>
 
+</style>
 
 ```
+
+## How it works
+
+Pass in the component you would like to be able to print here
+
+:printcomponent="$options.components.test" 
+
+So replace .test with the name of your component.
+
+Your component will be added into the printer component. When the component is clicked a
+
+window will popup allowing you to print the page. 
+
+The child printer component emits an event to parent component telling it wants to print. The parent sets printer_off to false which hides other components. We pass the value of printer_off
+to the child printer as a prop. Printer is watching this value and in turn knows when you are ready to print. 
+
+After you print, the printer component will show other components again.
+
+
 
 ## Contributing
 
