@@ -1,6 +1,6 @@
 {
   "name": "vue-printer",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "description": "vuejs print component",
   "main": "printer.vue",
   "scripts": {

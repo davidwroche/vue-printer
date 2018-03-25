@@ -1,36 +1,36 @@
 <template>
 <div>
-<div ref="infoBox">
-    <div class="adBanner">
+  <div v-on:click="print('printableArea')" id="printableArea"> 
+ <component :is="printcomponent">
+    </component>
     </div>
-</div>
 </div>
 </template>
 
 <script>
 export default {
+  props: ["printcomponent"],
   data: function() {
     return {
-      add: ""
+      d: this.printcomponent
     };
   },
-  mounted: function() {
-    var self = this;
-    var vis = self.$refs.infoBox.clientHeight;
+  methods: {
+    print(divName) {
+      var printContents = document.getElementById(divName).innerHTML;
+      var originalContents = document.body.innerHTML;
 
-    if (vis > 0) {
-    } else {
-      self.add = "detected";
-      self.$emit("passValue", self.add);
+      document.body.innerHTML = printContents;
+
+      window.print();
+
+      document.body.innerHTML = originalContents;
     }
-  }
+  },
+  mounted: function() {}
 };
 </script>
 
 <style scoped>
-.adBanner {
-  background-color: transparent;
-  height: 1px;
-  width: 1px;
-}
+
 </style>
