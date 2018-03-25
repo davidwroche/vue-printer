@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div v-on:click="print('printableArea')" id="printableArea"> 
+  <div v-on:click="print('printableArea')"> 
  <component :is="printcomponent">
     </component>
     </div>
@@ -9,22 +9,24 @@
 
 <script>
 export default {
-  props: ["printcomponent"],
+  props: ["printcomponent", "printer_off"],
   data: function() {
-    return {
-      d: this.printcomponent
-    };
+    return {};
+  },
+  watch: {
+    printer_off: function() {
+      var self = this;
+
+      if(self.printer_off != true){
+      window.print();
+      self.$emit("printerStatus", true);
+      }
+    }
   },
   methods: {
-    print(divName) {
-      var printContents = document.getElementById(divName).innerHTML;
-      var originalContents = document.body.innerHTML;
-
-      document.body.innerHTML = printContents;
-
-      window.print();
-
-      document.body.innerHTML = originalContents;
+    print() {
+      var self = this;
+      self.$emit("printerStatus", false);
     }
   },
   mounted: function() {}
